@@ -14,9 +14,11 @@ import com.google.cloud.speech.v2.SpeechRecognitionResult;
 import com.google.protobuf.ByteString;
 import com.rockstone.exception.TranscriptionException;
 import com.rockstone.service.ParseAudioService;
+import com.rockstone.service.TicketManagementService;
 import com.rockstone.utils.Constants;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.io.IOUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -30,6 +32,8 @@ public class ParseAudioServiceImpl implements ParseAudioService {
 
 
     String projectId = "sustained-vial-384519";
+    @Autowired
+    TicketManagementService ticketManagementService;
 
     @Override
     public String convertAudioToText(MultipartFile audioFile) {
@@ -59,6 +63,10 @@ public class ParseAudioServiceImpl implements ParseAudioService {
 
                 String transcription = processTranscription(response);
                 log.info("Exit Method convertAudioToText: audio converted to text successfully: {}", transcription);
+
+                log.info("Saving Ticket to Database: {}", transcription);
+                ticketManagementService.saveTicketToDatabase(transcription);
+
                 return  transcription;
             }
         }

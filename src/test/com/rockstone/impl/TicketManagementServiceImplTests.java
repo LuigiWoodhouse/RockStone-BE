@@ -36,11 +36,9 @@ public class TicketManagementServiceImplTests {
     }
 
     @Test
-    public void saveTicketToDatabase() throws IOException, TranscriptionException {
+    public void saveTicketToDatabase()  {
 
         String transcriptedAudio = "test";
-        MultipartFile audioFile = null;
-        when(parseAudioService.convertAudioToText(audioFile)).thenReturn(transcriptedAudio);
         newTicket.setMessage("convert-audio-to-string");
         newTicket.setCategory(null);
         newTicket.setAgentAssigned("Ryan");
@@ -49,7 +47,7 @@ public class TicketManagementServiceImplTests {
 
         when(ticketRepository.save(any(Ticket.class))).thenReturn(newTicket);
 
-        ticketManagementServiceImpl.saveTicketToDatabase();
+        ticketManagementServiceImpl.saveTicketToDatabase(transcriptedAudio);
         assertNotNull(newTicket);
 
     }

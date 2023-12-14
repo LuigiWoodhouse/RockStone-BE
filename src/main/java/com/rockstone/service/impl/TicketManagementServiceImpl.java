@@ -58,14 +58,13 @@ public class TicketManagementServiceImpl implements TicketManagementService {
     }
 
     @Override
-    public void saveTicketToDatabase() {
+    public void saveTicketToDatabase( String transcription ) {
         log.trace("Enter method saveTicketToDatabase");
 
-        MultipartFile audioFile = null;
         try {
 
             Ticket newTicket = new Ticket();
-            newTicket.setMessage(parseAudioService.convertAudioToText(audioFile));
+            newTicket.setMessage(transcription);
             newTicket.setCategory(null);
             newTicket.setAgentAssigned("Ryan");
             newTicket.setStatus(Constants.TICKET_STATUS_OPEN);
@@ -74,8 +73,6 @@ public class TicketManagementServiceImpl implements TicketManagementService {
             log.info("Exit Method saveTicketToDatabase : ticket created successfully");
             ticketRepository.save(newTicket);
 
-            // TODO: 13/12/2023  iterate through the message
-            //  if it contains one of the user defined keywords, then set it as category;
         }
         catch(Exception e){
             log.error("Exit method saveTicketToDatabase: an error occurred when trying save ticket to database", e);
