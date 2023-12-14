@@ -1,4 +1,4 @@
-package rockstone.controller;
+package com.rockstone.controller;
 
 import com.google.protobuf.ByteString;
 import com.rockstone.controller.VoiceTextController;

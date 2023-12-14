@@ -1,4 +1,4 @@
-package rockstone.service.impl;
+package com.rockstone.service.impl;
 
 import com.rockstone.service.TicketManagementService;
 import com.rockstone.service.impl.ParseAudioServiceImpl;
