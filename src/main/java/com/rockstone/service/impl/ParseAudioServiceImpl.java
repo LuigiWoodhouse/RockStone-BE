@@ -16,10 +16,12 @@ import com.rockstone.exception.TranscriptionException;
 import com.rockstone.service.ParseAudioService;
 import com.rockstone.utils.Constants;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.io.IOUtils;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 import java.io.IOException;
+import java.io.InputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -31,10 +33,9 @@ public class ParseAudioServiceImpl implements ParseAudioService {
 
 
     String projectId = "sustained-vial-384519";
-    MultipartFile audioFile;
 
     @Override
-    public String convertAudioToText() {
+    public String convertAudioToText(MultipartFile audioFile) {
         log.trace("Enter Method convertAudioToText");
 
 
@@ -72,11 +73,12 @@ public class ParseAudioServiceImpl implements ParseAudioService {
 
     @Override
     public ByteString convertAudioToByteString(MultipartFile audioFile) throws IOException {
-        Path path = Paths.get(audioFile.toString());
-        byte[] data = Files.readAllBytes(path);
-        ByteString audioBytes = ByteString.copyFrom(data);
-        return  audioBytes;
+        try (InputStream inputStream = audioFile.getInputStream()) {
+            byte[] data = IOUtils.toByteArray(inputStream);
+            return ByteString.copyFrom(data);
+        }
     }
+
 
     private Recognizer createRecognizer(String projectId, String recognizerId, SpeechClient speechClient)  {
         log.trace("Enter Method createRecognizer");

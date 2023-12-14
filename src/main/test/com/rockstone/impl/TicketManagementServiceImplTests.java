@@ -11,6 +11,8 @@ import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
+import org.springframework.web.multipart.MultipartFile;
+
 import java.io.IOException;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.ArgumentMatchers.any;
@@ -37,8 +39,8 @@ public class TicketManagementServiceImplTests {
     public void saveTicketToDatabase() throws IOException, TranscriptionException {
 
         String transcriptedAudio = "test";
-
-        when(parseAudioService.convertAudioToText()).thenReturn(transcriptedAudio);
+        MultipartFile audioFile = null;
+        when(parseAudioService.convertAudioToText(audioFile)).thenReturn(transcriptedAudio);
         newTicket.setMessage("convert-audio-to-string");
         newTicket.setCategory(null);
         newTicket.setAgentAssigned("Ryan");

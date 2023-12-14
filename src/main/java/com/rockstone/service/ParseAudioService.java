@@ -5,7 +5,7 @@ import com.rockstone.exception.TranscriptionException;
 import org.springframework.web.multipart.MultipartFile;
 import java.io.IOException;
 public interface ParseAudioService {
-    String convertAudioToText() throws IOException, TranscriptionException;
+    String convertAudioToText(MultipartFile audioFile) throws IOException, TranscriptionException;
 
     ByteString convertAudioToByteString(MultipartFile audioFile) throws IOException;
 }

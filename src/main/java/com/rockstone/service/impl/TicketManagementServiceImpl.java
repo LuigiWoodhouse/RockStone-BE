@@ -81,10 +81,11 @@ public class TicketManagementServiceImpl implements TicketManagementService {
     public void saveTicketToDatabase() {
         log.trace("Enter method saveTicketToDatabase");
 
+        MultipartFile audioFile = null;
         try {
 
             Ticket newTicket = new Ticket();
-            newTicket.setMessage(parseAudioService.convertAudioToText());
+            newTicket.setMessage(parseAudioService.convertAudioToText(audioFile));
             newTicket.setCategory(null);
             newTicket.setAgentAssigned("Ryan");
             newTicket.setStatus(Constants.TICKET_STATUS_OPEN);
