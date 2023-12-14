@@ -1,4 +1,4 @@
-package com.rockstone.service.impl;
+package rockstone.service.impl;
 
 import com.rockstone.entity.Ticket;
 import com.rockstone.exception.TranscriptionException;

@@ -1,4 +1,4 @@
-package com.rockstone.impl;
+package rockstone.service.impl;
 
 import com.rockstone.service.impl.ParseAudioServiceImpl;
 import org.apache.commons.io.IOUtils;
