@@ -19,8 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class VoiceTextController {
     @Autowired
     TicketManagementService ticketManagementService;
-    @RequestMapping(value = "/profile", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-
+    @RequestMapping(value = "/text", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<GenericResponse> getTickets() {
         log.trace("Enter Method getTickets");
         ResponseEntity<GenericResponse> response = null;
@@ -34,4 +33,20 @@ public class VoiceTextController {
         log.trace("Return method getTickets. Results: {}", response);
         return response;
     }
+    @RequestMapping(value = "/audio", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<GenericResponse> getAudio(String filePath) {
+        log.trace("Enter Method getTickets");
+        ResponseEntity<GenericResponse> response = null;
+
+        try {
+            response = ticketManagementService.getAudio(filePath);
+        } catch (Exception e) {
+            log.error("Error occured");
+            response = new ResponseEntity<>(new GenericResponse(500, "Internal Server Error"), HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+        log.trace("Return method getTickets. Results: {}", response);
+        return response;
+    }
+
+
 }

@@ -5,7 +5,9 @@ import com.rockstone.response.TicketManamgementResponse;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 
+
 public interface TicketManagementService {
 
     ResponseEntity<GenericResponse> getTickets();
+    ResponseEntity<GenericResponse> getAudio(String filePath);
 }
