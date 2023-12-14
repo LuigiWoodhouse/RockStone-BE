@@ -22,9 +22,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 import java.io.IOException;
 import java.io.InputStream;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.List;
 import static com.rockstone.utils.RecognizerIdGenerator.generateRandomRecognizerId;
 @Service
@@ -71,8 +68,7 @@ public class ParseAudioServiceImpl implements ParseAudioService {
         }
     }
 
-    @Override
-    public ByteString convertAudioToByteString(MultipartFile audioFile) throws IOException {
+    private ByteString convertAudioToByteString(MultipartFile audioFile) throws IOException {
         try (InputStream inputStream = audioFile.getInputStream()) {
             byte[] data = IOUtils.toByteArray(inputStream);
             return ByteString.copyFrom(data);
