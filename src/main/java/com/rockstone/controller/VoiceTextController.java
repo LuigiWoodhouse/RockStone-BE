@@ -2,12 +2,14 @@ package com.rockstone.controller;
 
 
 import com.google.protobuf.ByteString;
+import com.rockstone.entity.Ticket;
 import com.rockstone.response.GenericResponse;
 import com.rockstone.response.TicketManamgementResponse;
 import com.rockstone.service.ParseAudioService;
 import com.rockstone.service.TicketManagementService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Description;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -22,6 +24,8 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.naming.NoPermissionException;
+import java.util.ArrayList;
+import java.util.List;
 
 @RestController
 @RequestMapping("/audio")
