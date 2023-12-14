@@ -59,7 +59,7 @@ public class TicketManagementServiceImpl implements TicketManagementService {
 
     @Override
     public void saveTicketToDatabase( String transcription ) {
-        log.trace("Enter method saveTicketToDatabase");
+        log.trace("Enter method saveTicketToDatabase Implementation");
 
         try {
 
@@ -70,7 +70,7 @@ public class TicketManagementServiceImpl implements TicketManagementService {
             newTicket.setStatus(Constants.TICKET_STATUS_OPEN);
             newTicket.setResolution(null);
 
-            log.info("Exit Method saveTicketToDatabase : ticket created successfully");
+            log.info("Exit Method saveTicketToDatabase Implementation: ticket created successfully");
             ticketRepository.save(newTicket);
 
         }

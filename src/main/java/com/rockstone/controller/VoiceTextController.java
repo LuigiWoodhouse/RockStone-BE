@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.naming.NoPermissionException;
+import javax.validation.Valid;
 
 @RestController
 @RequestMapping("/audio")
@@ -48,9 +49,9 @@ public class VoiceTextController {
         log.trace("Return method getTickets. Results: {}", response);
         return response;
     }
-    @PostMapping(value = "/convert/text")
+    @PostMapping( value = "/convert/text")
     public ResponseEntity<GenericResponse> convertAudio(
-            @RequestPart(name = "audioFile") MultipartFile audioFile) {
+            @Valid @RequestPart(name = "audioFile") MultipartFile audioFile) {
         log.trace("Enter Method convertAudio");
 
         ResponseEntity<GenericResponse> responseEntity;
