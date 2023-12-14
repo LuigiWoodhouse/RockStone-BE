@@ -11,10 +11,20 @@ public class Ticket {
     @NotNull
     private String message;
 
+    @NotNull
+    private String category;
+
+    @NotNull
+    private String agentAssigned;
+
+    @NotNull
+    private String status;
+
+    @NotNull
+    private String resolution;
+
     @Column(name = "CreatedAt", updatable = false, nullable = false)
     @Temporal(TemporalType.TIMESTAMP)
     private Date createdAt;
-
-    private Date entrDate;
 
 }

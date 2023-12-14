@@ -26,16 +26,12 @@ public class VoiceTextController {
         ResponseEntity<GenericResponse> response = null;
 
         try {
-
              response = ticketManagementService.getTickets();
-
         } catch (Exception e) {
             log.error("Error occured");
             response = new ResponseEntity<>(new GenericResponse(500, "Internal Server Error"), HttpStatus.INTERNAL_SERVER_ERROR);
-
         }
         log.trace("Return method getTickets. Results: {}", response);
-
         return response;
     }
 }
