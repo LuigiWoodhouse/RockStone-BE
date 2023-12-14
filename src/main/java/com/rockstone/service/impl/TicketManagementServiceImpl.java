@@ -1,6 +1,5 @@
 package com.rockstone.service.impl;
 
-import com.google.protobuf.ByteString;
 import com.rockstone.entity.Ticket;
 import com.rockstone.repository.TicketRepository;
 import com.rockstone.response.GenericResponse;
@@ -14,9 +13,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
-
 import java.util.List;
-
 @Slf4j
 @Service
 public class TicketManagementServiceImpl implements TicketManagementService {
@@ -58,23 +55,6 @@ public class TicketManagementServiceImpl implements TicketManagementService {
 
         }
         return response;
-    }
-
-    @Override
-    public ByteString getAudio(MultipartFile audioFile) {
-        log.trace("Enter method getAudio");
-        ResponseEntity<GenericResponse> response;
-
-        GenericResponse genericResponse = new GenericResponse();
-        try {
-
-            ByteString audioBytes = parseAudioService.convertAudioToByteString(audioFile);
-            return audioBytes;
-        }
-        catch(Exception e){
-            log.error("Exit method getAudio: an error occurred when trying to parse audio", e);
-            throw new RuntimeException("Failed to parse audio");
-        }
     }
 
     @Override
