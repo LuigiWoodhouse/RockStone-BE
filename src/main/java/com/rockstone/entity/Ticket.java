@@ -22,11 +22,9 @@ public class Ticket {
     @Column(name="message")
     private String message;
 
-    @NotNull
     @Column(name="category")
     private String category;
 
-    @NotNull
     @Column(name="agentAssigned")
     private String agentAssigned;
 
@@ -34,7 +32,6 @@ public class Ticket {
     @Column(name="status")
     private String status;
 
-    @NotNull
     @Column(name="resolution")
     private String resolution;
 

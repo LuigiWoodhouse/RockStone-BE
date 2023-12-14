@@ -12,5 +12,5 @@ public interface TicketManagementService {
 
     ResponseEntity<GenericResponse> getTickets();
 
-    void saveTicketToDatabase();
+    void saveTicketToDatabase( String transcription);
 }

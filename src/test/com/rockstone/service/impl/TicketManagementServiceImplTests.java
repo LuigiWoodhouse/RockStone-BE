@@ -1,4 +1,4 @@
-package rockstone.service.impl;
+package com.rockstone.service.impl;
 
 import com.rockstone.entity.Ticket;
 import com.rockstone.exception.TranscriptionException;
@@ -60,7 +60,7 @@ public class TicketManagementServiceImplTests {
 
         Mockito.when(ticketRepository.save(ArgumentMatchers.any(Ticket.class))).thenReturn(newTicket);
 
-        ticketManagementServiceImpl.saveTicketToDatabase();
+        ticketManagementServiceImpl.saveTicketToDatabase(Mockito.anyString());
         Assertions.assertNotNull(newTicket);
     }
 
