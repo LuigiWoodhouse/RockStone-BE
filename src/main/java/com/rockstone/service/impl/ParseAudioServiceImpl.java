@@ -56,7 +56,7 @@ public class ParseAudioServiceImpl implements ParseAudioService {
                 log.info("Creating recognitionConfig... {}",recognitionConfig);
 
                 RecognizeRequest request = createRecognizeRequest(recognizer, audioBytes, recognitionConfig);
-                log.info("Create recognize request...:{}", request);
+                log.info("Create recognize request...");
 
                 RecognizeResponse response = speechClient.recognize(request);
                 log.info("Create recognize response...:{}", response);
@@ -75,14 +75,12 @@ public class ParseAudioServiceImpl implements ParseAudioService {
             throw new RuntimeException("Failed to convert audio");
         }
     }
-
     private ByteString convertAudioToByteString(MultipartFile audioFile) throws IOException {
         try (InputStream inputStream = audioFile.getInputStream()) {
             byte[] data = IOUtils.toByteArray(inputStream);
             return ByteString.copyFrom(data);
         }
     }
-
 
     private Recognizer createRecognizer(String projectId, String recognizerId, SpeechClient speechClient)  {
         log.trace("Enter Method createRecognizer");
@@ -113,13 +111,19 @@ public class ParseAudioServiceImpl implements ParseAudioService {
     }
 
     private RecognitionConfig createRecognitionConfig() {
+        log.trace("Enter Method createRecognitionConfig");
+
+        log.info("Exit Method createRecognitionConfig: recognition config created successfully");
         return RecognitionConfig.newBuilder()
                 .setAutoDecodingConfig(AutoDetectDecodingConfig.newBuilder().build())
                 .build();
     }
-
     private RecognizeRequest createRecognizeRequest(Recognizer recognizer, ByteString audioBytes,
                                                            RecognitionConfig recognitionConfig) {
+        log.trace("Enter Method createRecognizeRequest");
+
+
+        log.info("Exit Method createRecognizeRequest: recognition config created successfully");
         return RecognizeRequest.newBuilder()
                 .setConfig(recognitionConfig)
                 .setRecognizer(recognizer.getName())
