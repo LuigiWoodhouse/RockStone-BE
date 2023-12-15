@@ -1,11 +1,8 @@
 package com.rockstone.controller;
 
-import com.google.protobuf.ByteString;
-import com.rockstone.controller.VoiceTextController;
 import com.rockstone.entity.Ticket;
 import com.rockstone.response.GenericResponse;
 import com.rockstone.service.ParseAudioService;
-import com.rockstone.service.TicketManagementService;
 import com.rockstone.service.impl.TicketManagementServiceImpl;
 import org.junit.Assert;
 import org.junit.Before;
@@ -20,14 +17,8 @@ import org.springframework.context.annotation.Description;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
-
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-
-
-import static org.junit.jupiter.api.Assertions.*;
-
 @SpringBootTest
 @ExtendWith(SpringExtension.class)
 public class VoiceTextControllerTest {

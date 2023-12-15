@@ -8,6 +8,7 @@ Spring Boot version is 2.3.4.RELEASE
 1. Ensure your java home path is set to java 11 jdk
 2. Ensure your ide sdk is set to java 11
 3. Locate the main class from the package "com.rockstone" , configure your run configs to be java 11
+4. A Dockerfile is included in this project to get started quickly
 
 ## Features
 

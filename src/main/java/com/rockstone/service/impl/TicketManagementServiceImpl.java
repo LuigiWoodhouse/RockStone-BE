@@ -4,7 +4,6 @@ import com.rockstone.entity.Ticket;
 import com.rockstone.repository.TicketRepository;
 import com.rockstone.response.GenericResponse;
 import com.rockstone.response.TicketManamgementResponse;
-import com.rockstone.service.ParseAudioService;
 import com.rockstone.service.TicketManagementService;
 import com.rockstone.utils.Constants;
 import lombok.extern.slf4j.Slf4j;
@@ -12,17 +11,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import org.springframework.web.multipart.MultipartFile;
-
 import java.util.ArrayList;
 import java.util.List;
 @Slf4j
 @Service
 public class TicketManagementServiceImpl implements TicketManagementService {
 
-
-    @Autowired
-    ParseAudioService parseAudioService;
     @Autowired
     TicketRepository ticketRepository;
 

@@ -5,7 +5,6 @@ import com.rockstone.exception.TranscriptionException;
 import com.rockstone.repository.TicketRepository;
 import com.rockstone.response.GenericResponse;
 import com.rockstone.service.ParseAudioService;
-import com.rockstone.service.impl.TicketManagementServiceImpl;
 import com.rockstone.utils.Constants;
 import org.junit.Assert;
 import org.junit.jupiter.api.Assertions;
@@ -20,13 +19,9 @@ import org.springframework.context.annotation.Description;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.multipart.MultipartFile;
-
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 public class TicketManagementServiceImplTests {
 
@@ -166,6 +161,4 @@ public class TicketManagementServiceImplTests {
 
         Assert.assertEquals(expecteResponse.getBody().getStatusCode(), response.getBody().getStatusCode());
     }
-
-
 }
